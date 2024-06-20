@@ -1,5 +1,6 @@
 from fastapi import FastAPI, File, UploadFile
 from typing import List
+import uvicorn
 
 import cv2
 from numpy.linalg import norm
@@ -119,7 +120,7 @@ def load_images(files: List[UploadFile] = File(...)):
 def instruction(type):
     return get_instr(type)
 
-
+uvicorn.run(app, host="127.0.0.1", port=8000)
 #if __name__ == "__main__":
 #    config = uvicorn.Config(app, port=8089)
 #    server = uvicorn.Server(config)
